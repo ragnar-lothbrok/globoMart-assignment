@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: clientApiGateway
-
-server:
-  port: 8003
-

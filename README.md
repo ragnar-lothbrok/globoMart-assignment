@@ -3,17 +3,17 @@
 
 	It offers the following functionality by using Embedded H2 Database.
     
-        	1. GET  	/productCatalogueService/products – gives the list of all products
-            2. GET 	 	/productCatalogueService/search  – gives the list of products for matching name,type
-            3. GET 	 	/productCatalogueService/searchByType – gives the list of products for matching type
-            4. POST  	/productCatalogueService/products – saves the given product
-            5. DELETE 	/productCatalogueService/products/{id} – delete the given product
+        	1. GET  	/products – gives the list of all products
+            2. GET 	 	/search  – gives the list of products for matching name,type
+            3. GET 	 	/searchByType – gives the list of products for matching type
+            4. POST  	/products – saves the given product
+            5. DELETE 	/products/{id} – delete the given product
 
 ### 2. Pricing Service
 
 	It offers the following functionality by using Embedded H2 Database.
     
-    		1. GET  	/pricingService/products/price/get
+    		1. GET  	/products/price/get
             
     The above method gives the price object containing MRP and Price value of a Product else it will return a response
     saying product not found.
@@ -38,18 +38,29 @@
 	
 ## Client API Gateway (ZUUL Proxy)
 	Any request from client will be re-directed to actual business through ZUUL Proxy. The following steps involved
-	in redirecting to the actual business service url.
+	in redirecting to the actual business service url. You can also intercept request usin ZuulFilter.
 			
 		1. ZUUL contacts the “Config Server” to know the instances of the Service Discovery.
 		2. ZUUL will be provided the actual business service url by the Eureka. Here, Eureka will perform load 
 		   balance using “Ribbon” before providing the actual url.
 		3. Finally, ZUUL will contact the actual business service url and redirect the response of the respective 
 		   service to the requested client
+		4. Eg. Suppose you have node service and you don't want to use it's service name and want to hit via relative 
+		   URL in that case you can mention zuul mapping and zuul will route that to mapped service.
+
+## SIDE-CAR
+	1. This is used to integrate all Netflix services to different language eg. You have written services on node/python
+	   and you want to integrate with exisiting spring cloud application. In that case you can use this service. In short
+	   form this is like adapter.
 
 ## HYSTRIX
 	We can monitor all the requests to the business services by using the “Hystrix Turbine Stream”. This will give
 	clear picture of all the requests information like how many got passed, how many got failed, how many still 
 	processing etc. for a specific period of time.
+
+## SWAGGER
+	Pricing Service : http://localhost:port/swagger-ui.html
+	Catalog Service : http://localhost:port/swagger-ui.html
 	
 ## Execution
 	1. Clone the project using "https://github.com/kranthiB/globoMart.git"
@@ -78,17 +89,6 @@
 
 	   Depends on number of instances required, execute the above command that many times.
 	   Each time, it runs on any random port.
-	   
-	6. ZUUL Proxy :- Go to “clientGateway” folder, execute the following command
-	
-		mvn spring-boot:run 					(Runs on http://localhost:8003)
-
-	7. Monitoring :- To monitor all the services using the hystrix turbine steam , go to “hystrixDashboard” 
-	   folder, execute the following command
-
-		mvn spring-boot:run 					(Runs on http://localhost:8004)
-
-
 
 
 
