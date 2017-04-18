@@ -1,0 +1,3 @@
+mvn spring-boot:run -Dspring.profiles.active=first
+mvn spring-boot:run -Dspring.profiles.active=second
+mvn spring-boot:run -Dspring.profiles.active=third
