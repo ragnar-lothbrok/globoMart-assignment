@@ -90,5 +90,16 @@
 	   Depends on number of instances required, execute the above command that many times.
 	   Each time, it runs on any random port.
 
+Cassandra :
+	1. For product attributes we can use nosql database because product attributes don't need transactional
+   properties and cassandra in linearly scalable and highly available. 
+   
+Mysql :
+	1. For pricing and inventory we can user mysql in master slave with sharding which will help us to
+   distribute the load.
+   
+Caching :
+ 	1. Aerospike or Redis can be used in both the cases.
+
 
 
