@@ -65,25 +65,25 @@
 ## Execution
 	1. Clone the project using "https://github.com/kranthiB/globoMart.git"
 	
-	2. Discovery Service :-- Go to “serviceDiscovery” folder, execute the following commands
+	2. Discovery Service :-- Go to “service-discovery” folder, execute the following commands
            (This will run 3 instances of eureka service discovery)
 
 		mvn spring-boot:run -Dspring.profiles.active=primary 	(Runs on http://localhost:8071)
 		mvn spring-boot:run -Dspring.profiles.active=secondary 	(Runs on http://localhost:8072)
 		mvn spring-boot:run -Dspring.profiles.active=tertiary 	(Runs on http://localhost:8073)
 
-	3. Config Server :- Go to “configServer” folder, execute the following command
+	3. Config Server :- Go to “config-server” folder, execute the following command
 	
 		mvn spring-boot:run 					(Runs on http://localhost:8000)
 
-	4. Product Catalogue Service :- Go to “productCatalogueService” folder, execute the following command
+	4. Product Catalogue Service :- Go to “product-catalog-service” folder, execute the following command
 	
 		mvn spring-boot:run
 
 	   Depends on number of instances required, execute the above command that many times.
 	   Each time, it runs on any random port.
 	   
-	5. Pricing Service :- Go to “pricingService” folder, execute the following command
+	5. Pricing Service :- Go to “pricing-service” folder, execute the following command
 	
 		mvn spring-boot:run
 
