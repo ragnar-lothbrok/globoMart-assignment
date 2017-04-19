@@ -101,4 +101,9 @@
  	1. Aerospike or Redis can be used in both the cases.
 
 
+Using Zuul Service :
+
+http://localhost:8003/api/pricingService/products/price/get?name=Levis&type=Shirt
+http://localhost:8003/api/productcatalogservice/products
+
 
